@@ -52,23 +52,25 @@ public:
     }
 
     void resize(size_t newSize){
-        DynamicArray<T> new_arr = new T[size];
+        T* new_arr = new T[size];
         for(int i = 0; i < size; i++){
             new_arr[i] = arr[i];
         }
         delete[] arr;
         //size = newSize;
         arr = new T[newSize];
-
+        T k = 0;
         if(newSize > size) {
+            cout << "1\n";
             for (int i = 0; i < size; i++) {
                 arr[i] = new_arr[i];
             }
             for (int i = size; i < newSize; i++) {
-                arr[i] = 0;
+                arr[i] = k;
             }
         }
         else{
+            cout << "2\n";
             for (int i = 0; i < newSize; i++) {
                 arr[i] = new_arr[i];
             }

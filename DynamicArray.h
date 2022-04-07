@@ -61,7 +61,6 @@ public:
         arr = new T[newSize];
         T k = 0;
         if(newSize > size) {
-            cout << "1\n";
             for (int i = 0; i < size; i++) {
                 arr[i] = new_arr[i];
             }
@@ -70,11 +69,11 @@ public:
             }
         }
         else{
-            cout << "2\n";
             for (int i = 0; i < newSize; i++) {
                 arr[i] = new_arr[i];
             }
         }
+        size = newSize;
         delete[] new_arr;
     }
 

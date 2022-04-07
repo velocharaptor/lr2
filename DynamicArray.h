@@ -9,29 +9,31 @@ using namespace std;
 template<class T> class DynamicArray{
 private:
     T* arr = nullptr;
-    size_t size{};
+    size_t size = 0;
 public:
-    //выделение памяти на массив DynamicArray и копирование в него элементов из введенного массива
-    DynamicArray copy_elem_array(T* input_arr, size_t count){
+
+    DynamicArray(T* input_arr, size_t count){
         size = count;
         arr = new T[size];
         for (int i = 0; i < size; i++) {
             arr[i] = input_arr[i];
         }
     }
-    //выделение памяти на массив
-    DynamicArray create_array(size_t count){
+
+    DynamicArray(size_t count){
         size = count;
         arr = new T[size];
-        cout << "Successful.\n";
+        for(int i = 0; i < size; i++){
+            arr[i] = 0;
+        }
     }
 
-    void delete_array(){
+    ~DynamicArray(){
         delete[] arr;
         cout << "Array destroy.\n";
     }
-    //выделение памяти на массив и копирование в него элементов из другого массива этого же класса
-    DynamicArray copy(DynamicArray<T> const &input_arr){
+
+    DynamicArray(DynamicArray<T> const &input_arr){
         size = input_arr.size;
         arr = new T[size];
         for(int i = 0; i < size; i++){
@@ -57,7 +59,6 @@ public:
             new_arr[i] = arr[i];
         }
         delete[] arr;
-        //size = newSize;
         arr = new T[newSize];
         T k = 0;
         if(newSize > size) {
@@ -85,6 +86,5 @@ public:
         cout << "\n";
     }
 };
-
 
 #endif //LR2_DYNAMICARRAY_H

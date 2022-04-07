@@ -46,8 +46,10 @@ int main()
     }
 
     arr1.resize(k); // переделать функцию resize
+    cout << "arr1(after resize): ";
     arr1.output_array();
-    arr1.copy_elem_array(arr_1, k);
+    arr1.copy_elem_array(arr_2, k);
+    cout << "arr1(after copy_elem_array): ";
     arr1.output_array();
 
     delete[] arr_1;

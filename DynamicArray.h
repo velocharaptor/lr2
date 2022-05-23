@@ -11,7 +11,6 @@ private:
     T* arr = nullptr;
     size_t size = 0;
 public:
-
     DynamicArray(T* input_arr, size_t count){
         size = count;
         arr = new T[size];
@@ -44,6 +43,10 @@ public:
 
     T GetLength(){
         return size;
+    }
+
+    void PopBack(){
+        size--;
     }
 
     void Set(T value, size_t index){

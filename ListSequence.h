@@ -47,19 +47,26 @@ public:
         list->Append(item);
     }
 
+    void PopBack() override{
+        list->PopBack();
+    }
+
     void Prepend(L item) override{
         list->Prepend(item);
+    }
+
+    void PopFront() {
+        list->PopFront();
     }
 
     size_t GetLength() override{
         return list->GetLength();
     }
 
-    ListSequence<L> GetSubListSequence(size_t start_index, size_t last_index){
+    ListSequence<L> GetSubListSequence(size_t start_index, size_t last_index) {
         ListSequence<L> new_list;
         LinkedList<L>  buff = list->GetSubList(start_index, last_index);
-        new_list.Set(buff.Get(0), 0);
-        for(int i = 1; i < buff.GetLength(); i++){
+        for(int i = 0; i < buff.GetLength(); i++){
             new_list.Append(buff.Get(i));
         }
         return new_list;

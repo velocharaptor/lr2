@@ -18,7 +18,11 @@ template<class S> class Sequence{
 
     virtual void Append(S item) = 0;
 
+    virtual void PopBack() = 0;
+
     virtual void Prepend(S item) = 0;
+
+   // virtual Sequence<S> GetSubListSequence(size_t start_index, size_t last_index) = 0;
 
     virtual void InsertAt(S item, size_t index) = 0;
 

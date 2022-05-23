@@ -8,6 +8,7 @@
 
 using namespace std;
 
+
 template<class A> class ArraySequence: public Sequence<A>{
 private:
     DynamicArray<A>* array;
@@ -16,8 +17,8 @@ public:
         array = new DynamicArray<A>(input_arr, count);
     }
 
-    explicit ArraySequence(size_t size){
-        array = new DynamicArray<A>(size);
+    explicit ArraySequence(size_t count){
+        array = new DynamicArray<A>(count);
     }
 
     ArraySequence(ArraySequence<A> &input_arr){
@@ -60,6 +61,10 @@ public:
         array->Set(item, array->GetLength() - 1);
     }
 
+    void PopBack() override{
+        array->PopBack();
+    }
+
     void Prepend(A item) override{
         array->Resize(array->GetLength() + 1);
         for(int i = array->GetLength() - 1; i > 0; i--){
@@ -69,7 +74,15 @@ public:
         }
         array->Set(item, 0);
     }
-
+/*
+    ArraySequence<A> GetSubListSequence(size_t start_index, size_t last_index) {
+        ArraySequence<A> sub_arr;
+        for(int i = start_index; i < last_index+1; i++){
+            sub_arr.Append(array->Get(i));
+        }
+        return sub_arr;
+    }
+*/
     void InsertAt(A item, size_t index){
         array->Set(index, item);
     }

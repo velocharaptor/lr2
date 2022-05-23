@@ -36,7 +36,7 @@ public:
 
     Stek(D &stek2): stek(D(stek2.getLength())){
         for(int i = 0; i < stek2.getLength(); i++){
-            push(stek2[i]);
+            AddLast(stek2[i]);
         }
     }
 
@@ -57,10 +57,24 @@ public:
         stek->PopBack();
     }
 
+    T Get(size_t index){
+        stek->Get(index);
+    }
+
     Stek<D, T> operator+(Stek<D, T> const &new_stek){
         D* temp = this->stek + new_stek.stek;
         Stek<D, T> concat_stek(temp);
         return concat_stek;
+    }
+
+    Stek<D, T> SubStek(size_t start_index, size_t last_index){
+        Stek<D, T> new_stek;
+        D buff = stek->GetSubListSequence(start_index, last_index);
+        buff.Print();
+       /* for(int i = 0; i < buff.GetLength(); i++){
+            new_stek.AddLast(buff.Get(i));
+        }
+        return new_stek; */
     }
 
     Stek<D, T> map(function<T(T &)> function1){

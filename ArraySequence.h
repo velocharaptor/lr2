@@ -74,15 +74,15 @@ public:
         }
         array->Set(item, 0);
     }
-/*
+
     ArraySequence<A> GetSubListSequence(size_t start_index, size_t last_index) {
-        ArraySequence<A> sub_arr;
+        ArraySequence<A> sub_arr(0);
         for(int i = start_index; i < last_index+1; i++){
             sub_arr.Append(array->Get(i));
         }
         return sub_arr;
     }
-*/
+    
     void InsertAt(A item, size_t index){
         array->Set(index, item);
     }

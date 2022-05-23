@@ -236,6 +236,7 @@ void PopBackTest(Stek<ListSequence<int>, int> &stek1,Stek<ListSequence<char>, ch
         cout << "PopBackTest<char> - FALSE\n";
 }
 
+
 void StekTests(){
     int arr[3] = {1, 2, 3};
     char carr[3] = {'a', 'b', 'c'};
@@ -288,4 +289,3 @@ void StekTesting(){
     StekTests();
     cout << "\n";
 }
-

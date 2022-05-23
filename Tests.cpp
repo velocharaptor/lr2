@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ArraySequence.h"
 #include "ListSequence.h"
+#include "Stek.h"
 
 using namespace std;
 
@@ -194,10 +195,97 @@ void ListSequenceTests(){
     ListSubListTest(List, cList);
 }
 
+void GetLengthTest(Stek<ListSequence<int>, int> &stek1,Stek<ListSequence<char>, char> &stek2){
+    if(stek1.GetLength() == 3)
+        cout << "GetLengthTest<int> - OK\n";
+    else
+        cout << "GetLengthTest<int> - FALSE\n";
+    if(stek2.GetLength() == 3)
+        cout << "GetLengthTest<char> - OK\n";
+    else
+        cout << "GetLengthTest<char> - FALSE\n";
+}
+void GetLastTest(Stek<ListSequence<int>, int> &stek1,Stek<ListSequence<char>, char> &stek2){
+    if(stek1.GetLast() == 3)
+        cout << "GetLastTest<int> - OK\n";
+    else
+        cout << "GetLastTest<int> - FALSE\n";
+    if(stek2.GetLast() == 'c')
+        cout << "GetLastTest<char> - OK\n";
+    else
+        cout << "GetLastTest<char> - FALSE\n";
+}
+void AddLastTest(Stek<ListSequence<int>, int> &stek1,Stek<ListSequence<char>, char> &stek2){
+    if(stek1.GetLast() == 4)
+        cout << "AddLastTest<int> - OK\n";
+    else
+        cout << "AddLastTest<int> - FALSE\n";
+    if(stek2.GetLast() == 'd')
+        cout << "AddLastTest<char> - OK\n";
+    else
+        cout << "AddLastTest<char> - FALSE\n";
+}
+void PopBackTest(Stek<ListSequence<int>, int> &stek1,Stek<ListSequence<char>, char> &stek2){
+    if(stek1.GetLast() == 3)
+        cout << "PopBackTest<int> - OK\n";
+    else
+        cout << "PopBackTest<int> - FALSE\n";
+    if(stek2.GetLast() == 'c')
+        cout << "PopBackTest<char> - OK\n";
+    else
+        cout << "PopBackTest<char> - FALSE\n";
+}
+
+void StekTests(){
+    int arr[3] = {1, 2, 3};
+    char carr[3] = {'a', 'b', 'c'};
+    Stek<ListSequence<int>, int> stek1(3);
+    stek1.AddLast(1);
+    stek1.AddLast(2);
+    stek1.AddLast(3);
+    Stek<ListSequence<char>, char> stek2(3);
+    stek2.AddLast('a');
+    stek2.AddLast('b');
+    stek2.AddLast('c');
+    GetLengthTest(stek1, stek2);
+    GetLastTest(stek1, stek2);
+    stek1.AddLast(4);
+    stek2.AddLast('d');
+    AddLastTest(stek1, stek2);
+    stek1.PopBack();
+    stek2.PopBack();
+    PopBackTest(stek1, stek2);
+    Stek<ListSequence<int>, int> stek3(3);
+    stek1.AddLast(4);
+    stek1.AddLast(5);
+    stek1.AddLast(6);
+
+}
+/*
 void StartTesting(){
     cout << "ArraySequenceTesting:\n\n";
     ArraySequenceTests();
     cout << "\nListSequenceTesting:\n\n";
     ListSequenceTests();
+    cout << "\nStekTesting:\n\n";
+    StekTests();
     cout << "\n";
 }
+*/
+
+void ArrayTesting(){
+    cout << "ArraySequenceTesting:\n\n";
+    ArraySequenceTests();
+    cout << "\n";
+}
+void ListTesting(){
+    cout << "\nListSequenceTesting:\n\n";
+    ListSequenceTests();
+    cout << "\n";
+}
+void StekTesting(){
+    cout << "\nStekTesting:\n\n";
+    StekTests();
+    cout << "\n";
+}
+

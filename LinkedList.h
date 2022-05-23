@@ -37,11 +37,13 @@ public:
     }
 
     LinkedList(){
-        list_head = new List;
-        list_tail = new List;
-        size = 1;
-        list_head->item = 0;
-        list_tail = list_head;
+      //  list_head = new List;
+      //  list_tail = new List;
+      //  size = 1;
+     //   list_head->item = 0;
+      //  list_tail = list_head;
+      list_head = nullptr;
+      size = 0;
     }
 
     LinkedList(LinkedList<L> const &list){
@@ -117,7 +119,7 @@ public:
             list_head = list_head->next;
         }
         List* temp_list = list.list_head;
-        for(size_t i = start_index; i < last_index + 1; i++){
+       /*for(size_t i = start_index; i < last_index + 1; i++){
             list.list_head->item = list_head->item;
             if(i < last_index) {
                 list_head = list_head->next;
@@ -125,8 +127,14 @@ public:
                 list.list_head = list.list_head->next;
             }
         }
-        list.list_tail = list.list_head;
-        list.list_head = temp_list;
+*/      for(size_t i = start_index; i < last_index + 1; i++){
+            list.Append(list_head->item);
+            if(i < last_index)
+                list_head = list_head->next;
+
+        }
+        //list.list_tail = list.list_head;
+        //list.list_head = temp_list;
         list_head = temp;
         temp = list.list_head;
         list.size = 0;
@@ -159,6 +167,19 @@ public:
         size++;
     }
 
+    void PopBack(){
+        List* temp = list_tail;
+        list_tail = list_tail->pred;
+        if(list_tail){
+            list_tail->next = nullptr;
+        }
+        if(temp == list_tail){
+            list_tail = nullptr;
+        }
+        delete temp;
+        size--;
+    }
+
     void Set(L item, int index){
         List* temp = list_head;
         for(int i = 0; i < index; i++){
@@ -181,6 +202,19 @@ public:
         else
             list_head = temp;
         size++;
+    }
+
+    void PopFront(){
+        List* temp = list_head;
+        list_head = list_head->next;
+        if(list_head){
+            list_head->pred = nullptr;
+        }
+        if(temp == list_head){
+            list_head = nullptr;
+        }
+        delete temp;
+        size --;
     }
 
     void InsertAt(L item, size_t index){
